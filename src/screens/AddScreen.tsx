@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import * as Notifications from 'expo-notifications';
-
-// Corrigindo o erro de comportamento da notificação
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false,
-    // Propriedades extras que o TS está pedindo:
     shouldShowBanner: true,
     shouldShowList: true,
   }),
 });
-
-// Tipando o navigation como 'any' para simplificar
 export default function AddScreen({ navigation }: any) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
