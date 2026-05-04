@@ -4,7 +4,6 @@ import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { db } from '../database/firebase';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 
-// Esconde os avisos amarelos chatos na tela
 LogBox.ignoreAllLogs();
 
 export default function HomeScreen({ navigation }) {
@@ -18,8 +17,6 @@ export default function HomeScreen({ navigation }) {
     });
     return () => unsubscribe();
   }, []);
-
-  // O que aparece quando a lista está vazia
   const TelaVazia = () => (
     <View style={styles.emptyContainer}>
       <AntDesign name="inbox" size={60} color="#334155" />
@@ -30,7 +27,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* Cabeçalho Bonitão */}
+      {}
       <View style={styles.header}>
         <View>
           <Text style={styles.title}>Minhas Tarefas</Text>
@@ -39,13 +36,12 @@ export default function HomeScreen({ navigation }) {
           <AntDesign name="setting" size={24} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
-
-      {/* Lista de Lembretes */}
+      {}
       <FlatList
         data={lembretes}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 100 }}
-        ListEmptyComponent={TelaVazia} // Chama a telinha fofa se não tiver nada
+        ListEmptyComponent={TelaVazia} 
         renderItem={({ item }) => (
           <TouchableOpacity 
             style={styles.card} 
@@ -67,8 +63,7 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         )}
       />
-
-      {/* Botão Flutuante (Floating Action Button) */}
+      {}
       <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate('Add')}>
         <AntDesign name="plus" size={28} color="#FFFFFF" />
       </TouchableOpacity>
@@ -79,7 +74,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#0F172A', // Fundo azul marinho bem escuro e chique
+    backgroundColor: '#0F172A',
     paddingHorizontal: 20, 
     paddingTop: 60 
   },
@@ -144,7 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 14 
   },
   fab: { 
-    backgroundColor: '#38BDF8', // Botão flutuante azul claro para destacar
+    backgroundColor: '#38BDF8',
     width: 65,
     height: 65,
     borderRadius: 35, 
